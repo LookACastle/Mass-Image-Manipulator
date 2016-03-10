@@ -9,9 +9,9 @@ supported_image_formats = [
 
 #Functions
 def image_manipulation(changes):
-    if changes == 1:
+    #if changes == 1:
         #Function
-    elif changes == 2:
+    if changes == 2:
         new_image_format = input("Please enter your new image format: ").upper.replace(".", None)
         if new_image_format not in supported_image_formats:
             print "%s not supported, choose another image format." % (new_image_format)
@@ -26,7 +26,7 @@ def change_format(img, new_image_format):
     new_image.save("img", ".", "new_image_format".lower)
 
 # Variables
-path = input("Please input path to folder: ")
+path = raw_input("Please input path to folder: ")
 print "For downscaling: 1"
 print "For image format conversion: 2"
 changes = input("Pick one option: ") #Add functionality so that we can say "or more" at the end.
