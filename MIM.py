@@ -25,25 +25,16 @@ def change_format(img, new_image_format):
     new_image = Image.open("img")
     new_image.save("img", ".", "new_image_format".lower)
 
-<<<<<<< HEAD
+# Variables
 path = input("Please input path to folder: ")
 print "For downscaling: 1"
 print "For image format conversion: 2"
 changes = input("Pick one option: ") #Add functionality so that we can say "or more" at the end.
-
 to_be_manipulated = []
 
 for file in os.listdir(path):
-	if file.endswith(".txt"):
+	if file.endswith(".txt"): #NOTE NOTE NOTE NOTE NOTE Change .txt to a variable someday NOTE NOTE NOTE NOTE NOTE
 		to_be_manipulated.append(file)
 print to_be_manipulated
-=======
-# Variables
-path = input("Please input path to folder")
-print "For downscaling/upscaling: 1"
-print "For image format conversion: 2"
-changes = input("Pick one option: ") #Add functionality so that we can say "or more" at the end.
-to_be_manipulated = os.listdir(path)
 
 input("Finished")
->>>>>>> origin/master
