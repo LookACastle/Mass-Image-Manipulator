@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from PIL import Image
-import multiprocessing as mp
 import os
 
 # Static variables
@@ -15,8 +14,6 @@ read_only_image_formats = [
 write_only_image_formats = [
 "PALM", "PDF", "XVPICS"
 ]
-
-pool = mp.Pool()
 
 #Functions
 def image_manipulation(changes, to_be_manipulated, input_image_format, new_image_format):
