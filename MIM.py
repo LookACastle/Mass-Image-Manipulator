@@ -53,5 +53,4 @@ for file in os.listdir(path):
 for x in range(len(to_be_manipulated)):
     image_manipulation(changes, path + "\\" + to_be_manipulated[x], input_image_format, new_image_format)
 
-
 input("Finished")
