@@ -26,26 +26,33 @@ def image_manipulation(changes, to_be_manipulated, input_image_format, new_image
             image_manipulation(changes, to_be_manipulated)
         else:
             change_format(to_be_manipulated, new_image_format, input_image_format)
+    if delete_old_files:
+        os.remove(to_be_manipulated)
     else:
-        raise Exception("Program recieved unexpected value")
+        raise Exception("Function image_manipulation recieved unexpected value")
 
 def change_format(img, new_image_format, input_image_format):
     new_image = Image.open(img)
-    new_image.save(img.replace(input_image_format, "." + new_image_format.lower()))
+    new_image.save(img.replace(input_image_format,  new_image_format.lower()))
 
 # Variables
+to_be_manipulated = []
 path = input("Please input path to folder: ")
 print("For downscaling: 1")
 print("For image format conversion: 2")
 changes = input("Pick one option: ") #Add functionality so that we can say "or more" at the end.
 if changes == "2":
     new_image_format = input("Please enter your new image format: ").upper()
-to_be_manipulated = []
-input_image_format = ".jpg" #Make it an input or something
-
+delete_old_files = input("Should I delete the old version of the images(True/False)?: ")
+only_specific_format = input("Do you only want to change images with a specific format? (True/False): ")
+if only_specific_format:
+    input_image_format = input("Which format?: ")
 for file in os.listdir(path):
-	if file.endswith(input_image_format):
-		to_be_manipulated.append(file)
+    if only_specific_format:
+        if file.endswith(input_image_format):
+             to_be_manipulated.append(file)
+    else:
+        to_be_manipulated.append(file)
 
 for x in range(len(to_be_manipulated)):
     image_manipulation(changes, path + "\\" + to_be_manipulated[x], input_image_format, new_image_format)
