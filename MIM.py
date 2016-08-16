@@ -55,7 +55,7 @@ def string_true(string):
     elif string == "False" or string == "false" or string == "N" or string == "n":
         string = False
     else:
-        raise Exception("string_true recieved a string that isn't false or true.")
+        raise Exception("string_true recieved a string that isn't false nor true.")
     return string
 
 def _only_specific_format(supported_image_formats, read_only_image_formats):
