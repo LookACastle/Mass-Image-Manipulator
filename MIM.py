@@ -17,9 +17,10 @@ write_only_image_formats = [
 ]
 
 #Functions
-def image_manipulation(changes, to_be_manipulated, input_image_format, new_image_format, jpg_quality, jpg_subsampling):
-    #if changes == "1":
-        #Function
+def image_manipulation(changes, to_be_manipulated, input_image_format, new_image_format, jpg_quality, jpg_subsampling, new_size):
+
+    if changes == "1":
+        resize(to_be_manipulated, new_size)
 
     if changes == "2":
         if new_image_format not in supported_image_formats and new_image_format not in write_only_image_formats:
@@ -33,6 +34,12 @@ def image_manipulation(changes, to_be_manipulated, input_image_format, new_image
 
     if delete_old_files:
         os.remove(to_be_manipulated)
+
+def resize(img, size):
+    new_image = Image.open(img)
+    file_name, file_extension = re.split('\.', img)
+    new_image.resize(size)
+    new_image.save(img.replace("_MIM." + file_extension))
 
 def change_format(img, new_image_format, input_image_format, jpg_quality, jpg_subsampling):
     new_image = Image.open(img)
@@ -71,6 +78,10 @@ print("For image format conversion: 2")
 changes = input("Pick one option: ") #Add functionality so that we can say "or more" at the end.
 jpg_quality = None
 jpg_subsampling = None
+new_size = None
+
+if changes == "1":
+    new_size = input("Please enter new image size (in format: number, number): ")
 
 if changes == "2":
     new_image_format = input("Please enter your new image format: ").upper()
@@ -101,7 +112,7 @@ for file in os.listdir(path):
 
 # Not variables anymore (find a better name)
 for x in range(len(to_be_manipulated)):
-    image_manipulation(changes, path + "\\" + to_be_manipulated[x], input_image_format, new_image_format, jpg_quality, jpg_subsampling)
+    image_manipulation(changes, path + "\\" + to_be_manipulated[x], input_image_format, new_image_format, jpg_quality, jpg_subsampling, new_size)
 
 input("Finished")
 
