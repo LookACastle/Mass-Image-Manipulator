@@ -43,9 +43,9 @@ def change_format(img, new_image_format, input_image_format, jpg_quality, jpg_su
         new_image.save(img.replace("." + file_extension, "_MIM." + new_image_format.lower()))
 
 def string_true(string):
-    if string == "True" or string == "true":
+    if string == "True" or string == "true" or string == "Y" or string == "y":
         string = True
-    elif string == "False" or string == "false":
+    elif string == "False" or string == "false" or string == "N" or string == "n":
         string = False
     else:
         raise Exception("string_true recieved a string that isn't false or true.")
@@ -75,14 +75,14 @@ jpg_subsampling = None
 if changes == "2":
     new_image_format = input("Please enter your new image format: ").upper()
 
-delete_old_files = string_true(input("Should I delete the old version of the images(True/False)?: "))
-only_specific_format = string_true(input("Do you only want to change images with a specific format? (True/False): "))
+delete_old_files = string_true(input("Should I delete the old version of the images(Y/N)?: "))
+only_specific_format = string_true(input("Do you only want to change images with a specific format? (Y/N): "))
 
 if only_specific_format:
     input_image_format = _only_specific_format(supported_image_formats, read_only_image_formats)
 
 if new_image_format == "JPG" and changes == "2":
-    advanced_jpg = string_true(input("Do you want advanced jpg control?(True/False): "))
+    advanced_jpg = string_true(input("Do you want advanced jpg control?(Y/N): "))
     if advanced_jpg:
         jpg_quality = int(input("How high quality should the jpgs be?(0-100): "))
         jpg_subsampling = int(input("Which subsampling should the jpgs use?(0: equivalent to 4:4:4, 1: equivalent to 4:2:2, 2: equivalent to 4:1:1): "))
