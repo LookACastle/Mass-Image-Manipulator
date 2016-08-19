@@ -36,9 +36,9 @@ def image_manipulation(changes, to_be_manipulated, input_image_format, new_image
         os.remove(to_be_manipulated)
 
 def resize(img, size):
-    new_image = Image.open(img)
+    image = Image.open(img)
     file_name, file_extension = re.split('\.', img)
-    new_image.resize(size)
+    new_image = image.resize((size[0],size[1]))
     new_image.save(img.replace( "." + file_extension, "_MIM." + file_extension))
 
 def change_format(img, new_image_format, input_image_format, jpg_quality, jpg_subsampling):
