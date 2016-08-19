@@ -39,7 +39,7 @@ def resize(img, size):
     new_image = Image.open(img)
     file_name, file_extension = re.split('\.', img)
     new_image.resize(size)
-    new_image.save(img.replace( "." + file_extension, "_MIM." + file_extension)
+    new_image.save(img.replace( "." + file_extension, "_MIM." + file_extension))
 
 def change_format(img, new_image_format, input_image_format, jpg_quality, jpg_subsampling):
     new_image = Image.open(img)
